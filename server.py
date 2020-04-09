@@ -4,13 +4,13 @@ import json
 import sql_interface as sql_int
 import sys
 
-PREFIX = "localhost:5000"
+OS = 1
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('index.html', prefix = PREFIX)
+    return render_template('index.html', opsys=OS)
 
 @app.route('/create.html')
 def create_html():
@@ -106,5 +106,5 @@ def edit_contact():
 if __name__ == '__main__':
     # add code to startup the sql and nosql databases
     if sys.platform == "linux":
-        PREFIX = "http://127.0.0.1:5000"
+        OS = 2
     app.run(debug=True)

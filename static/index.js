@@ -5,8 +5,15 @@ var doCreate = function() {
         "username": username,
         "password": password
     }
+    p1 = "localhost:5000"
+    p2 = "http://127.0.0.1:5000"
     endpoint = "/create"
-    url = string.concat(prefix, endpoint)
+    url = ""
+    if (op == 1) {
+        url = p1.concat(endpoint)
+    } else {
+        url = p2.concat(endpoint)
+    }
     fetch(url, {
         method: "POST",
         headers: {
