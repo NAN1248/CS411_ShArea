@@ -16,8 +16,11 @@ var doCreate = function() {
         body: JSON.stringify(data)
     }).then(response => {
         response.json().then(data => {
-            const name = data.email
-            $("#showName").val(name);
+                const val = data["value"]
+                if (val == "failure") {
+                        alert("works");
+                        $("#showName").val(email);
+                }
         })
     });
 }

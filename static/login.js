@@ -19,10 +19,11 @@ var doLogin = function() {
         body: JSON.stringify(data)
     }).then(response => {
         response.json().then(data => {
-            const val = data.value
+            const val = data["value"]
             // $("#emailField").val(email);
-            if (val == "Success") {
-                    window.location.href = './templates/settings';
+            if (val == "failure") {
+                    alert("hi")
+                    //window.location.href = './templates/settings';
             }
         })
     });
