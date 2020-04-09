@@ -1,0 +1,31 @@
+<html>
+
+<body>
+<div class="container">
+        <form>
+
+        <label for="usrname">Verify Email</label>
+        <input type="text" id="usrname" placeholder="Email">
+
+        <label for="oldName">Contact to Edit or Delete</label>
+        <input type="text" id="oldName" placeholder="Insert contact you wish to delete/edit">
+
+        <label for="newName">New Contact Info</label>
+        <input type="text" id="newName" placeholder="Insert new contact you want to add/edit">
+
+        <label for="editType">Edit Type</label>
+        <select id="editType" name="Edit Type">
+                <option value="edit">Edit</option>
+                <option value="add">Add</option>
+                <option value="delete">Delete</option>
+        </select>
+
+        <input type="button" id="submit_btn" value="Submit">
+
+        </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="./static/Settings.js"></script>
+</body>
+</html>
