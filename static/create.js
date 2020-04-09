@@ -5,7 +5,9 @@ var doCreate = function() {
         "email": email,
         "password": password
     }
-    fetch("http://127.0.0.1:5000/create_user", {
+    endpoint = "/create"
+    url = string.concat(prefix, endpoint)
+    fetch(url, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

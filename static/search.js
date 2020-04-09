@@ -1,10 +1,14 @@
 // var ex = ['a','b','c']
+var test = "http://localhost:5000/contact"
+var url = "http://127.0.0.1:5000/contact"
 var doLogin = function() {
     const email = $('#usr').val()
     const data = {
         "email": email
     }
-    fetch("http://127.0.0.1:5000/contact", {
+    endpoint = "/create"
+    url = string.concat(prefix, endpoint)
+    fetch(url, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",

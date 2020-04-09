@@ -1,3 +1,6 @@
+var test = "http://localhost:5000/login"
+var url = "http://127.0.0.1:5000/login"
+
 var doLogin = function() {
     const email = $('#email').val()
     const password = $('#password').val()
@@ -5,7 +8,9 @@ var doLogin = function() {
         "email": email,
         "password": password
     }
-    fetch("http://127.0.0.1:5000/login", {
+    endpoint = "/create"
+    url = string.concat(prefix, endpoint)
+    fetch(url, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -16,7 +21,7 @@ var doLogin = function() {
             const val = data.value
             // $("#emailField").val(email);
             if (val == "Success") {
-                    window.location.href = './templates/settings.html';
+                    window.location.href = './templates/settings';
             }
         })
     });
