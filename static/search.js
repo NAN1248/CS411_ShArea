@@ -6,7 +6,7 @@ var doLogin = function() {
     const data = {
         "email": email
     }
-    endpoint = "/create"
+    endpoint = "/contact"
     url = string.concat(prefix, endpoint)
     fetch(url, {
         method: "GET",

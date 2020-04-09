@@ -5,7 +5,7 @@ var doCreate = function() {
         "email": email,
         "password": password
     }
-    endpoint = "/create"
+    endpoint = "/create_user"
     url = string.concat(prefix, endpoint)
     fetch(url, {
         method: "POST",

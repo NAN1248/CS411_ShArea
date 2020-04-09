@@ -62,18 +62,18 @@ def login():
     data = json.loads(request.data)
     email = data['email']
     password = data['password']
-    
+
     value = sql_int.login(email, password)
 
     return jsonify({
         "value": value
     })
-    
+
 # get contact info
 @app.route('/contact')
 def contact():
     data = json.loads(request.data)
-    email = data['email']  
+    email = data['email']
     contact_info = sql_int.contact_info(email)
 
     return jsonify({
@@ -97,15 +97,14 @@ def edit_contact():
         value = sql_int.delete_contact_info(email, oldval)
     elif edit == "edit":
         value = sql_int.update_contact_info(email, oldval, newval)
-    
+
     return jsonify({
         "value": value
     })
 
 
 if __name__ == '__main__':
-    # add code to startup the sql and nosql databases 
+    # add code to startup the sql and nosql databases
     if sys.platform == "linux":
         PREFIX = "http://127.0.0.1:5000"
     app.run(debug=True)
-

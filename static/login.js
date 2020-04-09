@@ -8,7 +8,7 @@ var doLogin = function() {
         "email": email,
         "password": password
     }
-    endpoint = "/create"
+    endpoint = "/login"
     url = string.concat(prefix, endpoint)
     fetch(url, {
         method: "POST",
