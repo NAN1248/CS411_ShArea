@@ -25,6 +25,9 @@ var doLogin = function() {
                     alert("hi")
                     //window.location.href = './templates/settings';
             }
+            else {
+                alert("success")
+            }
         })
     });
 }
