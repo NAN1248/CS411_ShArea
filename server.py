@@ -15,27 +15,27 @@ def home():
 
 @app.route('/create.html')
 def create_html():
-    return render_template('create.html', prefix = PREFIX)
+    return render_template('create.html')
 
 @app.route('/login.html')
 def login_html():
-    return render_template('login.html', prefix = PREFIX)
+    return render_template('login.html')
 
 @app.route('/search.html')
 def search_html():
-    return render_template('search.html', prefix = PREFIX)
+    return render_template('search.html')
 
 @app.route('/settings.html')
 def settings_html():
-    return render_template('settings.html', prefix = PREFIX)
+    return render_template('settings.html')
 
 @app.route('/events.html')
 def events_html():
-    return render_template('events.html', prefix = PREFIX)
+    return render_template('events.html')
 
 @app.route('/events')
 def events():
-    return render_template('events.html', prefix = PREFIX)
+    return render_template('events.html')
 
 @app.route('/create', methods=['POST'])
 def create():

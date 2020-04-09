@@ -7,7 +7,8 @@ var doLogin = function() {
         "email": email
     }
     endpoint = "/contact"
-    url = string.concat(prefix, endpoint)
+    prefix = "http://127.0.0.1:5000"
+    url = prefix.concat(endpoint)
     fetch(url, {
         method: "GET",
         headers: {

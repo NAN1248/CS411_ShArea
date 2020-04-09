@@ -18,7 +18,10 @@ var update = function() {
         "newVal": newName,
         "edit": edit
     }
-    fetch("http://127.0.0.1:5000/edit_contact", {
+    endpoint = "/edit_contact"
+    prefix = "http://127.0.0.1:5000"
+    url = prefix.concat(endpoint)
+    fetch(url, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

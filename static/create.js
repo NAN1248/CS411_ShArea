@@ -5,8 +5,9 @@ var doCreate = function() {
         "email": email,
         "password": password
     }
+    prefix = "http://127.0.0.1:5000"
     endpoint = "/create_user"
-    url = string.concat(prefix, endpoint)
+    url = prefix.concat(endpoint)
     fetch(url, {
         method: "POST",
         headers: {
