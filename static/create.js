@@ -1,8 +1,8 @@
 var doCreate = function() {
-    const username = $('#username').val()
+    const email = $('#email').val()
     const password = $('#password').val()
     const data = {
-        "username": username,
+        "email": email,
         "password": password
     }
     endpoint = "/create"
@@ -15,14 +15,13 @@ var doCreate = function() {
         body: JSON.stringify(data)
     }).then(response => {
         response.json().then(data => {
-            const name = data.username
+            const name = data.email
             $("#showName").val(name);
-
         })
     });
 }
 
 
 $("input#createButton").click(function() {
-    doCreate();
+        doCreate();
 });
