@@ -5,6 +5,7 @@ var doCreate = function() {
         "username": username,
         "password": password
     }
+    /*
     p1 = "localhost:5000"
     p2 = "http://127.0.0.1:5000"
     endpoint = "/create"
@@ -14,6 +15,11 @@ var doCreate = function() {
     } else {
         url = p2.concat(endpoint)
     }
+    */
+    prefix = "http://127.0.0.1:5000"
+    endpoint = "/create"
+    url = prefix.concat(endpoint)
+
     fetch(url, {
         method: "POST",
         headers: {
