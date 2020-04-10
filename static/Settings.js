@@ -3,19 +3,10 @@ var update = function() {
     const oldName = $('#oldName').val()
     const newName = $('#newName').val()
     const edit = $('#editType').val()
-    // if (edit == "edit") {
-    //         alert("edit");
-    // }
-    // if (edit == "add") {
-    //         alert("add");
-    // }
-    // if (edit == "delete") {
-    //         alert("delete");
-    // }
     const data = {
         "email": email,
-        "oldVal": oldName,
-        "newVal": newName,
+        "oldval": oldName,
+        "newval": newName,
         "edit": edit
     }
     endpoint = "/edit_contact"
@@ -29,8 +20,13 @@ var update = function() {
         body: JSON.stringify(data)
     }).then(response => {
         response.json().then(data => {
-            const val  = data.value
-            $("#emailField").val(usrname);
+            const val  = data["value"]
+            if(val == "success") {
+                    alert("You've made changes to your settings")
+            }
+            else {
+                    alert("failed to insert new changes")
+            }
         })
     });
 }

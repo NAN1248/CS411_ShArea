@@ -71,7 +71,7 @@ def login():
     })
 
 # get contact info
-@app.route('/contact')
+@app.route('/contact', methods = ['POST'])
 def contact():
     data = json.loads(request.data)
     email = data['email']
