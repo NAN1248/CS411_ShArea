@@ -37,12 +37,11 @@ def login(email, password):
         return "success"
 
 
-
 # returns contact info in a list
 def contact_info(email):
     print("contacts ", email)
     # interface with SQL here
-    sql = "SELECT * FROM Contact Method WHERE User_username = ?"
+    sql = "SELECT * FROM ContactMethod WHERE User_username = ?"
     connection = create_connection()
     connection.row_factory = lambda cursor, row: row[2]
     cursor = connection.cursor()
@@ -52,7 +51,7 @@ def contact_info(email):
 
 # returns "success" or "failure"
 def add_contact_info(email, value):
-    print("add contact: ", email, info)
+    #print("add contact: ", email, info)
     # interface with SQL here
     # NEED TYPE
     connection = create_connection()
@@ -68,6 +67,7 @@ def add_contact_info(email, value):
     connection.commit()
     connection.close()
     return "success"
+
     # return "failure"
 
 # returns "success" or "failure"

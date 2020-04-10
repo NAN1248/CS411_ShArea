@@ -28,7 +28,7 @@ var doCreate = function() {
         body: JSON.stringify(data)
     }).then(response => {
         response.json().then(data => {
-            const name = data.username
+            const name = data["username"]
             $("#showName").val(name);
 
         })

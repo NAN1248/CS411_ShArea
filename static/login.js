@@ -1,5 +1,5 @@
-var test = "http://localhost:5000/login"
-var url = "http://127.0.0.1:5000/login"
+// var test = "http://localhost:5000/login"
+// var url = "http://127.0.0.1:5000/login"
 
 var doLogin = function() {
     const email = $('#email').val()
@@ -20,13 +20,11 @@ var doLogin = function() {
     }).then(response => {
         response.json().then(data => {
             const val = data["value"]
-            // $("#emailField").val(email);
-            if (val == "failure") {
-                    alert("hi")
-                    //window.location.href = './templates/settings';
+            if (val == "success") {
+                    window.location.href = 'settings.html';
             }
             else {
-                alert("success")
+                alert("Invalid Username/Password")
             }
         })
     });
