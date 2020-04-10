@@ -7,7 +7,10 @@ def create_user(email, password):
     print("created: ", email, password)
     connection = create_connection()
     cursor = connection.cursor()
-    # Change when putting in Events
+
+    if cursor.execute("SELECT * FROM User WHERE email = ?", (email,)).fetchone() != None:
+         return "failure"
+
     sql = ''' INSERT INTO User(email, password, Event_id)
               VALUES(?,?,?) '''
 
@@ -15,8 +18,6 @@ def create_user(email, password):
     cursor.execute(sql, user)
     connection.commit()
     connection.close()
-
-    # return "failure"
     return "success"
 
 # returns "success" or "failure"
@@ -42,9 +43,9 @@ def login(email, password):
 def contact_info(email):
     print("contacts ", email)
     # interface with SQL here
-    sql = "SELECT * FROM Contact Method WHERE User_username = ?"
+    sql = "SELECT * FROM ContactMethod WHERE User_username = ?"
     connection = create_connection()
-    connection.row_factory = lambda cursor, row: row[2]
+    connection.row_factory = lambda cursor, row: row[1]
     cursor = connection.cursor()
     result = cursor.execute(sql, (email,)).fetchall()
     connection.close()
@@ -52,18 +53,20 @@ def contact_info(email):
 
 # returns "success" or "failure"
 def add_contact_info(email, value):
-    print("add contact: ", email, info)
+    print("add contact: ", email, value)
     # interface with SQL here
     # NEED TYPE
     connection = create_connection()
     cursor = connection.cursor()
 
-    if cursor.execute("SELECT * FROM User WHERE email = ?", (email,)).fetchall() == None:
+    if cursor.execute("SELECT * FROM User WHERE email = ?", (email,)).fetchone() == None:
+        return "failure"
+    elif cursor.execute("SELECT * FROM ContactMethod WHERE User_username = ? AND info = ?", (email,value)).fetchone() != None:
         return "failure"
 
-    sql = ''' INSERT INTO ContactMethod(User_username, type, info)
-              VALUES(?,?,?) '''
-    values = (email, "Account Type", value)
+    sql = ''' INSERT INTO ContactMethod(User_username, info)
+              VALUES(?,?) '''
+    values = (email, value)
     cursor.execute(sql, values)
     connection.commit()
     connection.close()
@@ -77,13 +80,18 @@ def delete_contact_info(email, info):
     # NEED TYPE (Maybe)
     connection = create_connection()
     cursor = connection.cursor()
+
+    if cursor.execute("SELECT * FROM User WHERE email = ?", (email,)).fetchone() == None:
+        return "failure"
+    elif cursor.execute("SELECT * FROM ContactMethod WHERE User_username = ? AND info = ?", (email,info)).fetchone() == None:
+        return "failure"
+
     sql = 'DELETE FROM ContactMethod WHERE User_username = ? AND info = ?'
     values = (email, info)
     cursor.execute(sql, values)
     connection.commit()
     connection.close()
     return "success"
-    # return "failure"
 
 # returns "success" or "failure"
 def update_contact_info(email, oldval, newval):
@@ -92,6 +100,12 @@ def update_contact_info(email, oldval, newval):
     # interface with SQL here
     connection = create_connection()
     cursor = connection.cursor()
+
+    if cursor.execute("SELECT * FROM User WHERE email = ?", (email,)).fetchone() == None:
+        return "failure"
+    elif cursor.execute("SELECT * FROM ContactMethod WHERE User_username = ? AND info = ?", (email,oldval)).fetchone() == None:
+        return "failure"
+
     sql = ''' UPDATE ContactMethod
               SET info = ?
               WHERE User_username = ? AND info = ?'''
@@ -100,14 +114,12 @@ def update_contact_info(email, oldval, newval):
     connection.commit()
     connection.close()
     return "success"
-    # return "failure"
 
 def create_connection():
 
     connection = None
     try:
         connection = sqlite3.connect('sql_database.db')
-        # connection = sqlite3.connect('sql_database2.db')
     except Error as error:
         print(error)
     return connection

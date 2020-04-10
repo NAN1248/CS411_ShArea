@@ -16,8 +16,7 @@ def create_database(db_file):
     location = "CREATE TABLE Location(address text PRIMARY KEY, name text, type text);"
     cursor.execute(location)
 
-    contact_method = ''' CREATE TABLE ContactMethod(User_username text, type text, info text,
-                         PRIMARY KEY(User_username),
+    contact_method = ''' CREATE TABLE ContactMethod(User_username text NOT NULL, info text,
                          FOREIGN KEY(User_username) REFERENCES User(email) ON DELETE CASCADE);'''
     cursor.execute(contact_method)
 

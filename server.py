@@ -1,4 +1,4 @@
-from flask import Flask
+ from flask import Flask
 from flask import render_template, request, jsonify
 import json
 import sql_interface as sql_int
