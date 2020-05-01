@@ -41,7 +41,6 @@ def make_event():
     print(data)
     value = mon_int.create_event(data)
     return jsonify({"value": value})
-    #return 
 
 @app.route('/get_all_events')
 def get_all_events():

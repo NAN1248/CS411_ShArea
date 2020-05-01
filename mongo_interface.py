@@ -10,13 +10,10 @@ def create_event(data):
         return "failure"
 
     params = {'id':idx, 'start_time':st, 'duration':duration, 'tags':tags}
-
-    r = requests.post(url=url, params=params)
+    
+    print(params)
+    r = requests.post(url=url, json=params)
     return "success"
-
-    #data = r.json()
-
-    #print(data)
 
 def get_all_events():
     r = requests.get(url=url)
