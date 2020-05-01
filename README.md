@@ -3,10 +3,17 @@
 # Requirements
 python3 
 Flask
+mongodb
 
 # Running
-To start the server:
-python server.py
+[1] start mongodb
+$ mongod --dbpath ./mongodata
+
+[2] start mongo server
+$ python3 events.py 5001
+
+[3] start server
+python3 server.py
 
 
 

@@ -34,16 +34,23 @@ def settings_html():
 def events_html():
     return render_template('events.html')
 
-@app.route('/make_event', methods=['POST'])
+@app.route('/create_event', methods=['POST'])
 def make_event():
+    print("endpoint")
     data = json.loads(request.data)
     print(data)
-    mon_int.create_event(data)
+    value = mon_int.create_event(data)
+    return jsonify({"value": value})
+    #return 
+
+@app.route('/get_all_events')
+def get_all_events():
+    results = mon_int.get_all_events()
+    return results
 
 @app.route('/events')
 def events():
     # get all events
-    mon_int.get_all_events()
     return render_template('events.html')
 
 @app.route('/create', methods=['POST'])
@@ -65,6 +72,11 @@ def create_user():
     return jsonify({
         "value": value
     })
+
+@app.route('/get_all_users')
+def get_all_users():
+    results = sql_int.get_all_users()
+    return results
 
 # login
 @app.route('/login', methods=['POST'])

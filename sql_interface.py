@@ -1,5 +1,6 @@
 import sqlite3
 from sqlite3 import Error
+from flask import jsonify
 
 # will create the user return "success" or "failure"
 def create_user(email, password):
@@ -114,6 +115,11 @@ def update_contact_info(email, oldval, newval):
     connection.commit()
     connection.close()
     return "success"
+
+# returns a list of all usernames in the results object
+# TODO @Akarsh
+def get_all_users():
+    return jsonify({"results":[]})
 
 def create_connection():
 
