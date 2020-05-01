@@ -3,6 +3,7 @@ from flask import render_template, request, jsonify
 import json
 import sql_interface as sql_int
 import sys
+import mongo_interface as mon_int
 
 # OS = 1
 
@@ -33,8 +34,16 @@ def settings_html():
 def events_html():
     return render_template('events.html')
 
+@app.route('/make_event', methods=['POST'])
+def make_event():
+    data = json.loads(request.data)
+    print(data)
+    mon_int.create_event(data)
+
 @app.route('/events')
 def events():
+    # get all events
+    mon_int.get_all_events()
     return render_template('events.html')
 
 @app.route('/create', methods=['POST'])

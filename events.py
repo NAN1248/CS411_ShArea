@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo
 from flask_restful import Resource, Api
+import sys
 
 app = Flask(__name__)
 api = Api(app)
@@ -63,4 +64,8 @@ api.add_resource(EventList, '/event')
 api.add_resource(Event, '/event/<string:_id>')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = 5000
+    if len(sys.argv) == 2:
+        port = int(sys.argv[1])
+    app.run(debug=True, port=port)
+
