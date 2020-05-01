@@ -7,12 +7,17 @@ mongodb
 
 # Running
 [1] start mongodb
+
+$ mkdir ./mongodata
+
 $ mongod --dbpath ./mongodata
 
 [2] start mongo server
+
 $ python3 events.py 5001
 
 [3] start server
+
 python3 server.py
 
 
