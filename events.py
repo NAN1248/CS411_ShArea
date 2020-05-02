@@ -62,7 +62,11 @@ class EventList(Resource):
         _start_time = request.json['start_time']
         _duration = request.json['duration']
         _tags = request.json['tags']
-
+        
+        # if the id exist, do not add that event
+        e = events.find_one({'id' : _id})
+        if e:
+            return jsonify({'result' : "The id exists, could not be added!"})
         output = {'id' : _id, 'start_time' : _start_time, 'duration':_duration, 'tags':_tags}
         event_id = events.insert(output)
 
