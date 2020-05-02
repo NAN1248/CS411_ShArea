@@ -23,6 +23,17 @@ class Event(Resource):
         else:
             output = "No such event"
         return jsonify({'id' : e['id'], 'start_time' : e['start_time'], 'duration':e['duration'], 'tags':e['tags']})
+    
+     def delete(self, _id):
+        events = mongo.db.events
+        _id = request.json['id']
+        e = events.find_one({'id' : _id})
+        if e:
+            events.remove({'id' : _id})
+            return jsonify({'result' : "Delete successfully"})
+        else:
+            return jsonify({'result' : "Nothing to delete"})
+
 
 # advanced function find by tag
 class Eventtag(Resource):
@@ -32,7 +43,8 @@ class Eventtag(Resource):
         for e in events.find({'tags' : _tag}):
             output.append({'id' : e['id'], 'start_time' : e['start_time'], 'duration':e['duration'], 'tags':e['tags']})
         return jsonify({'result' : output})
-
+    
+   
 class EventList(Resource):
     
     def get(self):
@@ -56,15 +68,6 @@ class EventList(Resource):
 
         return jsonify({'id' : _id, 'start_time' : _start_time, 'duration':_duration, 'tags':_tags})
 
-    def delete(self):
-        events = mongo.db.events
-        _id = request.json['id']
-        e = events.find_one({'id' : _id})
-        if e:
-            events.remove({'id' : _id})
-            return jsonify({'result' : "Delete successfully"})
-        else:
-            return jsonify({'result' : "Nothing to delete"})
 
 
 api.add_resource(EventList, '/event')
