@@ -24,9 +24,8 @@ class Event(Resource):
             output = "No such event"
         return jsonify({'id' : e['id'], 'start_time' : e['start_time'], 'duration':e['duration'], 'tags':e['tags']})
     
-     def delete(self, _id):
+     def delete(self,_id):
         events = mongo.db.events
-        _id = request.json['id']
         e = events.find_one({'id' : _id})
         if e:
             events.remove({'id' : _id})
@@ -73,7 +72,6 @@ class EventList(Resource):
         event_id = events.insert(output)
 
         return jsonify({'id' : _id, 'start_time' : _start_time, 'duration':_duration, 'tags':_tags})
-
 
 
 api.add_resource(EventList, '/event')
