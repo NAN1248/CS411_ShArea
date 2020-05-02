@@ -119,7 +119,17 @@ def update_contact_info(email, oldval, newval):
 # returns a list of all usernames in the results object
 # TODO @Akarsh
 def get_all_users():
-    return jsonify({"results":[]})
+
+    connection = create_connection()
+    cursor = connection.cursor()
+
+    sql = ''' Select email
+              From User '''
+
+    usernames = [i[0] for i in cursor.execute(sql).fetchall()]
+    # print(usernames)
+    connection.close()
+    return jsonify({"results": usernames})
 
 def create_connection():
 

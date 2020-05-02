@@ -19,7 +19,7 @@ def main():
     #
 
     # Testing for create_user(email, password)
-    sqldb.create_database('sql_database.db')
+    # sqldb.create_database('sql_database.db')
     # print(sq.create_user("test@illinois.edu", "password"))
     # print(sq.create_user("test2@illinois.edu", "password2"))
 
@@ -36,20 +36,20 @@ def main():
     # connection.close()
 
     # Testing for contact_info(email)
-    print(sq.delete_contact_info("test@illinois.edu", "IG:@test"))
-    print(sq.contact_info("test@illinois.edu"))
+    # print(sq.delete_contact_info("test@illinois.edu", "IG:@test"))
+    # print(sq.contact_info("test@illinois.edu"))
     #print(sq.contact_info("test2@illinois.edu"))
 
     # Testing for update_contact_info
-    print(sq.update_contact_info("test@illinois.edu", "Twitter:@test", "IG:@test"))
-    print(sq.contact_info("test@illinois.edu"))
+    # print(sq.update_contact_info("test@illinois.edu", "Twitter:@test", "IG:@test"))
+    # print(sq.contact_info("test@illinois.edu"))
 
     # print(sq.add_contact_info("test@illinois.edu", "IG:@test"))
 
     # sql = "SELECT * FROM ContactMethod"
     # sql_funct(sql)
 
-
+    # sq.get_all_users()
 
 def sql_funct(sql):
     connection = sq.create_connection()
