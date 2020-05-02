@@ -50,6 +50,9 @@ def main():
     # sql_funct(sql)
 
     # sq.get_all_users()
+    user_list = ['demo1test@demo.org', 't1000estuser1000', 'testuser10', 'testuser1000']
+    # for user in user_list:
+    #     print(sq.contact_info(user))
 
 def sql_funct(sql):
     connection = sq.create_connection()

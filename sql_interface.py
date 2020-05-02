@@ -44,7 +44,12 @@ def login(email, password):
 def contact_info(email):
     print("contacts ", email)
     # interface with SQL here
-    sql = "SELECT * FROM ContactMethod WHERE User_username = ?"
+    # sql = "SELECT * FROM ContactMethod WHERE User_username = ?"
+
+    sql = ''' SELECT c.User_username, c.info
+              FROM User u Left Outer Join ContactMethod c on u.email = c.User_username
+              WHERE u.email = ?'''
+
     connection = create_connection()
     connection.row_factory = lambda cursor, row: row[1]
     cursor = connection.cursor()
