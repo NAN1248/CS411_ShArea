@@ -5,7 +5,7 @@ url = "http://127.0.0.1:5001/event"
 
 def create_event(data):
     try:
-        idx, st, duration, tags = data['id'], data['start_time'], data['duration'], data['tags']
+        idx, st, duration, tags = data['id'], data['start_time'], data['duration'], data['tags'].lower()
     except KeyError:
         return "failure"
 
@@ -20,7 +20,7 @@ def get_all_events():
     #print(r)
     return r.json()
 
-def del_event(event_id):
+def delete_event(event_id):
     url_del = url+"/"+event_id
     r = requests.delete(url=url_del)
     return "success"
@@ -28,4 +28,5 @@ def del_event(event_id):
 def search_tags(tag):
     urltag = url+"tag/"+tag
     r = requests.get(urltag)
+    print(urltag)
     return r.json()

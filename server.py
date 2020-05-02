@@ -45,24 +45,21 @@ def make_event():
 @app.route('/delete_event', methods=['POST'])
 def del_event():
     data = json.loads(request.data)
-    value = mon_int.create_event(data["event_id"])
+    print(data)
+    value = mon_int.delete_event(data["id"])
     return jsonify({"value": value})
 
 @app.route('/search_event', methods=['POST'])
 def search_event():
     data = json.loads(request.data)
-    value = mon_int.create_event(data["query"])
-    return jsonify({"value": value})
+    results = mon_int.search_tags(data["query"])
+    return results
 
 @app.route('/get_all_events')
 def get_all_events():
     results = mon_int.get_all_events()
     return results
 
-@app.route('/events')
-def events():
-    # get all events
-    return render_template('events.html')
 
 @app.route('/create', methods=['POST'])
 def create():
