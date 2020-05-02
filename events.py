@@ -40,6 +40,8 @@ class Eventtag(Resource):
     def get(self, _tag):
         events = mongo.db.events
         output = []
+        # capitalize 
+        _tag = _tag[:1].upper() + _tag[1:]
         for e in events.find({'tags' : _tag}):
             output.append({'id' : e['id'], 'start_time' : e['start_time'], 'duration':e['duration'], 'tags':e['tags']})
         return jsonify({'result' : output})
