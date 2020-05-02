@@ -42,6 +42,18 @@ def make_event():
     value = mon_int.create_event(data)
     return jsonify({"value": value})
 
+@app.route('/delete_event', methods=['POST'])
+def del_event():
+    data = json.loads(request.data)
+    value = mon_int.create_event(data["event_id"])
+    return jsonify({"value": value})
+
+@app.route('/search_event', methods=['POST'])
+def search_event():
+    data = json.loads(request.data)
+    value = mon_int.create_event(data["query"])
+    return jsonify({"value": value})
+
 @app.route('/get_all_events')
 def get_all_events():
     results = mon_int.get_all_events()

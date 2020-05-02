@@ -19,3 +19,13 @@ def get_all_events():
     r = requests.get(url=url)
     #print(r)
     return r.json()
+
+def del_event(event_id):
+    url_del = url+"/"+event_id
+    r = requests.delete(url=url_del)
+    return "success"
+
+def search_tags(tag):
+    urltag = url+"tag/"+tag
+    r = requests.get(urltag)
+    return r.json()
