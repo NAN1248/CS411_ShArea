@@ -13,6 +13,7 @@ app.url_map.strict_slashes = False # Disable redirecting on POST method from /ev
 
 mongo = PyMongo(app)
 
+# find event by id
 class Event(Resource):
      def get(self, _id):
         myevent = mongo.db.events
@@ -23,8 +24,14 @@ class Event(Resource):
             output = "No such event"
         return jsonify({'id' : e['id'], 'start_time' : e['start_time'], 'duration':e['duration'], 'tags':e['tags']})
 
-
-
+# advanced function find by tag
+class Eventtag(Resource):
+    def get(self, _tag):
+        events = mongo.db.events
+        output = []
+        for e in events.find({'tags' : _tag}):
+            output.append({'id' : e['id'], 'start_time' : e['start_time'], 'duration':e['duration'], 'tags':e['tags']})
+        return jsonify({'result' : output})
 
 class EventList(Resource):
     
@@ -62,10 +69,11 @@ class EventList(Resource):
 
 api.add_resource(EventList, '/event')
 api.add_resource(Event, '/event/<string:_id>')
+api.add_resource(Eventtag, '/eventtag/<string:_tag>')
+
 
 if __name__ == '__main__':
     port = 5000
     if len(sys.argv) == 2:
         port = int(sys.argv[1])
     app.run(debug=True, port=port)
-
