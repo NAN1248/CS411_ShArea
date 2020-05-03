@@ -50,7 +50,16 @@ def main():
     # sql_funct(sql)
 
     # sq.get_all_users()
-    user_list = ['demo1test@demo.org', 't1000estuser1000', 'testuser10', 'testuser1000']
+    # user_list = ['demo1test@demo.org', 't1000estuser1000', 'testuser10', 'testuser1000']
+
+    # sql = "DELETE FROM ContactMethod WHERE User_username = 'demo1test@demo.org'"
+
+    sql = "SELECT * FROM User"
+    sql = "SELECT * FROM ContactMethod"
+    print (sql_funct(sql))
+
+    # print(sq.get_all_users())
+
     # for user in user_list:
     #     print(sq.contact_info(user))
 
