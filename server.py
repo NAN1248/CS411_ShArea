@@ -35,7 +35,7 @@ def events_html():
     return render_template('events.html')
 
 @app.route('/MyEvents.html')
-def login_html():
+def my_events_html():
     return render_template('MyEvents.html')
 
 @app.route('/create_event', methods=['POST'])
