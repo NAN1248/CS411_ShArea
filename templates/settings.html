@@ -1,33 +1,132 @@
+
 <html>
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<body>
-<div class="container">
-        <form>
+            <style>
+                body {
+                    font-family: "Lato", sans-serif;
+                }
 
-        <label for="usrname">Verify Email</label>
-        <input type="text" id="usrname" placeholder="Email">
+                .sidebar {
+                    height: 100%;
+                    width: 85px;
+                    position: fixed;
+                    z-index: 1;
+                    top: 0;
+                    left: 0;
+                    background-color: #111;
+                    overflow-x: hidden;
+                    transition: 0.5s;
+                    padding-top: 60px;
+                    white-space: nowrap;
+                }
 
-        <label for="oldName">Contact to Edit or Delete</label>
-        <input type="text" id="oldName" placeholder="Insert contact you wish to delete/edit">
+                .sidebar a {
+                    padding: 8px 8px 8px 32px;
+                    text-decoration: none;
+                    font-size: 25px;
+                    color: #818181;
+                    display: block;
+                    transition: 0.3s;
+                }
 
-        <label for="newName">New Contact Info</label>
-        <input type="text" id="newName" placeholder="Insert new contact you want to add/edit">
+                .sidebar a:hover {
+                    color: #f1f1f1;
+                }
 
-        <label for="editType">Edit Type</label>
-        <select id="editType" name="Edit Type">
-                <option value="edit">Edit</option>
-                <option value="add">Add</option>
-                <option value="delete">Delete</option>
-        </select>
+                .sidebar .closebtn {
+                    position: absolute;
+                    top: 0;
+                    right: 25px;
+                    font-size: 36px;
+                    margin-left: 50px;
+                }
 
-        <input type="button" id="submit_btn" value="Submit">
+                .material-icons,
+                .icon-text {
+                    vertical-align: middle;
+                }
 
-        </form>
-</div>
-<br>
-<button onclick="window.location.href = 'search.html';">Get Contact Info</button>
+                .material-icons {
+                    padding-bottom: 3px;
+                }
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="./static/Settings.js"></script>
-</body>
+                #main {
+                    transition: margin-left .5s;
+                    padding: 16px;
+                    margin-left: 100px;
+                }
+                /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+                @media screen and (max-height: 450px) {
+                    .sidebar {
+                        padding-top: 15px;
+                    }
+                    .sidebar a {
+                        font-size: 18px;
+                    }
+                }
+            </style>
+        </head>
+
+        <body>
+
+                <div id="mySidebar" class="sidebar" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
+                        <a href="MyEvents.html"><i class="material-icons">create</i><span class="icon-text"></span>&nbsp;&nbsp;&nbsp;&nbsp;Create Event</a></span>
+                        <a href="search.html"><i class="material-icons">search</i><span class="icon-text"></span>&nbsp;&nbsp;&nbsp;&nbsp;Find A Friend</a></span>
+                        </a><br>
+                        <a href="events.html"><i class="material-icons">emoji_events</i><span class="icon-text"></span>&nbsp;&nbsp;&nbsp;&nbsp;Find Events</span></a><br>
+                        <a href="settings.html"><i class="material-icons">perm_identity</i><span class="icon-text"></span>&nbsp;&nbsp;&nbsp;&nbsp;Account Info<span></a>
+                </div>
+            <div id="main">
+                    <div class="container">
+                            <form>
+
+                            <label for="usrname">Verify Email</label>
+                            <input type="text" id="usrname" placeholder="Email">
+
+                            <label for="oldName">Contact to Edit or Delete</label>
+                            <input type="text" id="oldName" placeholder="Insert contact you wish to delete/edit">
+
+                            <label for="newName">New Contact Info</label>
+                            <input type="text" id="newName" placeholder="Insert new contact you want to add/edit">
+
+                            <label for="editType">Edit Type</label>
+                            <select id="editType" name="Edit Type">
+                                    <option value="edit">Edit</option>
+                                    <option value="add">Add</option>
+                                    <option value="delete">Delete</option>
+                            </select>
+
+                            <input type="button" id="submit_btn" value="Submit">
+
+                            </form>
+                    </div>
+                    <br>
+                    <button onclick="window.location.href = 'search.html';">Get Contact Info</button>
+
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                    <script src="./static/Settings.js"></script>
+            </div>
+
+            <script>
+                var mini = true;
+
+                function toggleSidebar() {
+                    if (mini) {
+                        console.log("opening sidebar");
+                        document.getElementById("mySidebar").style.width = "250px";
+                        document.getElementById("main").style.marginLeft = "250px";
+                        this.mini = false;
+                    } else {
+                        console.log("closing sidebar");
+                        document.getElementById("mySidebar").style.width = "85px";
+                        document.getElementById("main").style.marginLeft = "85px";
+                        this.mini = true;
+                    }
+                }
+            </script>
+        </body>
 </html>
