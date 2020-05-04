@@ -5,9 +5,11 @@ url = "http://127.0.0.1:5001/event"
 
 def create_event(data):
     try:
-        idx, st, duration, tags = data['id'], data['start_time'], data['duration'], data['tags'].lower()
+        idx, st, duration, tags = data['id'], data['start_time'], data['duration'], data['tags']
     except KeyError:
         return "failure"
+    
+    tags = [tag.lower() for tag in tags]
 
     params = {'id':idx, 'start_time':st, 'duration':duration, 'tags':tags}
     
