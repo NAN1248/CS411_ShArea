@@ -1,13 +1,15 @@
-var update = function() {
+// Credit for li function: https://codepen.io/anantanandgupta/pen/oLLgyN
+var update = function () {
         const id = $('#id').val()
     const start_time = $('#start_time').val()
     const duration = $('#duration').val()
     const tags = $('#tags').val()
+    const arr = tags.split(", ")
     const data = {
         "id": id,
         "start_time": start_time,
         "duration": duration,
-        "tags": tags
+        "tags": arr
     }
     endpoint = "/create_event"
     prefix = "http://127.0.0.1:5000"

@@ -16,12 +16,20 @@ var doLogin = function() {
     }).then(response => {
         response.json().then(data => {
             const info = data["contacts"]
-             $("#contacts").val(info);
+            var listItemString = $('#listItem').html();
+            for(var i = 0; i < info.length; i++) {
+                    var listItem = $('<li>'+listItemString+'</li>');
+                    var listItemTitle = $('.title', listItem);
+                    var it = $('#usr').val()+": " + info[i]
+                    listItemTitle.html(it);
+                    $('#dataList').append(listItem);
+            }
         })
     });
 }
 
 
 $("input#submitBtn").click(function() {
+        $(dataList).empty();
         doLogin();
 });

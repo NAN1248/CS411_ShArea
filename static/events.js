@@ -1,3 +1,4 @@
+// Credit for li function: https://codepen.io/anantanandgupta/pen/oLLgyN
 var getEvents = function() {
     endpoint = "/get_all_events"
     prefix = "http://127.0.0.1:5000"
@@ -12,18 +13,18 @@ var getEvents = function() {
         response.json().then(data => {
                 // console.log(res)
                 var obj = data["result"]
-                var display = []
+                var listItemString = $('#listItem').html();
                 for(var i = 0; i < obj.length; i++) {
-                        var item = obj[i]
-                        tmp = []
-                        tmp.push("id: " + item.id)
-                        tmp.push("start_time: " + item.start_time)
-                        tmp.push("tags: " + item.tags)
-                        tmp.push("duration: " + item.duration)
-                        // console.log(obj[i].start_time);
-                        display.push(tmp)
+                        var it = obj[i]
+                        var listItem = $('<li>' + listItemString + '</li>');
+                        var listItemTitle = $('.title', listItem);
+                        listItemTitle.html("User_ID: " + it.id);
+                        var listItemAmount = $('.tag', listItem);
+                        listItemAmount.html("Tags: " + it.tags);
+                        var listItemDesc = $('.duration', listItem);
+                        listItemDesc.html("Start time: " + it.start_time + " Duration:" + it.duration);
+                        $('#dataList').append(listItem);
                 }
-             $("#Events").val(display);
         })
     });
 }
@@ -45,27 +46,23 @@ var searchEvent = function() {
     }).then(response => {
         response.json().then(data => {
                 var obj = data["result"]
-                var display = []
+                var listItemString = $('#listItem').html();
                 for(var i = 0; i < obj.length; i++) {
-                        var item = obj[i]
-                        tmp = []
-                        tmp.push("id: " + item.id)
-                        tmp.push("start_time: " + item.start_time)
-                        tmp.push("tags: " + item.tags)
-                        tmp.push("duration: " + item.duration)
-                        // console.log(obj[i].start_time);
-                        display.push(tmp)
+                        var it = obj[i]
+                        var listItem = $('<li>' + listItemString + '</li>');
+                        var listItemTitle = $('.title', listItem);
+                        listItemTitle.html("User_ID: " + it.id);
+                        var listItemAmount = $('.amount', listItem);
+                        listItemAmount.html("Tags: " + it.tags);
+                        var listItemDesc = $('.description', listItem);
+                        listItemDesc.html("Start time: " + it.start_time + " Duration:" + it.duration);
+                        $('#dataList').append(listItem);
                 }
-             $("#Events").val(display);
         })
     });
 }
 
-
-$("input#submitBtn").click(function() {
-        getEvents();
-});
-
 $("input#searchBtn").click(function() {
+        $(dataList).empty();
         searchEvent();
 });

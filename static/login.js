@@ -21,7 +21,7 @@ var doLogin = function() {
         response.json().then(data => {
             const val = data["value"]
             if (val == "success") {
-                    window.location.href = 'settings.html';
+                    window.location.href = 'events.html';
             }
             else {
                 alert("Invalid Username/Password")
