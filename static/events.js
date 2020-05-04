@@ -52,9 +52,9 @@ var searchEvent = function() {
                         var listItem = $('<li>' + listItemString + '</li>');
                         var listItemTitle = $('.title', listItem);
                         listItemTitle.html("User_ID: " + it.id);
-                        var listItemAmount = $('.amount', listItem);
+                        var listItemAmount = $('.tag', listItem);
                         listItemAmount.html("Tags: " + it.tags);
-                        var listItemDesc = $('.description', listItem);
+                        var listItemDesc = $('.duration', listItem);
                         listItemDesc.html("Start time: " + it.start_time + " Duration:" + it.duration);
                         $('#dataList').append(listItem);
                 }
