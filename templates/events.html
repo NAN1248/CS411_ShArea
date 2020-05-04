@@ -1,6 +1,4 @@
 <html>
-<html>
-<head>
         <head>
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -69,12 +67,60 @@
                         font-size: 18px;
                     }
                 }
-            </style>
-        </head>
+                body {
+                        font-family: Helvetica;
+                }
 
-        <body>
+                ul {
+                        list-style-type: none;
+                        line-height: 24px;
+                        margin: 0;
+                        padding: 0;
+                }
+
+                sup {
+                        vertical-align: baseline;
+                        position: relative;
+                        top: -0.4em;
+                        color: red;
+                }
+
+                div.templates {
+                        display: none;
+                }
+
+                div.title {
+                        float: left;
+                        overflow: auto;
+                }
+
+                div.tag {
+                        float: right;
+                        overflow: auto;
+                        color: #37b;
+                }
+
+                div.duration {
+                        overflow: auto;
+                        font-size: .9em;
+                        color: #666;
+                        line-height: normal;
+                }
+
+                .row1,
+                .row2 {
+                        clear: both;
+                }
+                li {
+                        padding: 5px 0;
+                }
+        </style>
+</head>
+
+        <body onload = "getEvents()">
 
                 <div id="mySidebar" class="sidebar" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
+                        <a href="http://127.0.0.1:5000"><i class="material-icons">home</i><span class="icon-text"></span>&nbsp;&nbsp;&nbsp;&nbsp;Logout<span></a>
                         <a href="MyEvents.html"><i class="material-icons">create</i><span class="icon-text"></span>&nbsp;&nbsp;&nbsp;&nbsp;Create Event</a></span>
                         <a href="search.html"><i class="material-icons">search</i><span class="icon-text"></span>&nbsp;&nbsp;&nbsp;&nbsp;Find A Friend</a></span>
                         </a><br>
@@ -82,21 +128,30 @@
                         <a href="settings.html"><i class="material-icons">perm_identity</i><span class="icon-text"></span>&nbsp;&nbsp;&nbsp;&nbsp;Account Info<span></a>
                 </div>
             <div id="main">
-                    <body>
-
-                            <form>
-                                    <label for="Events">Events Near You</label>
-                                    <label for="tag_info">Email</label>
-                                    <input type="text" id="tag_info" placeholder="Enter Tag To Search For">
-                                    <input type="text" id="Events" name="Contact Info" style="height:100px"></input>
-                                    <input type="button" id="submitBtn" value="Find All Events">
-                                    <input type="button" id="searchBtn" value="Search">
+                            <h1 style = "text-align:center;">Find Events</h1>
+                            <form style="text-align:center;">
+                                    <label for="tag_info">Enter Tag To Search For</label><br>
+                                    <br>
+                                    <input type="text" id="tag_info" placeholder="Enter Tags (comma separated)"><br>
+                                    <br>
+                                    <input type="button" id="searchBtn" value="Search"><br>
 
                             </form>
+                            <h2> Open Events:</h2>
+                            <ul id="dataList"></ul>
+                            <div class="templates">
+                                    <div id="listItem">
+                                            <div class="row1">
+                                                    <div class="title"></div>
+                                                    <div class="tag"></div>
+                                            </div>
+                                            <div class="row2"><div class="duration"></div></div>
+                                    </div>
+                            </div>
 
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                         <script src="./static/events.js"></script>
-                            </div>
+        </div>
                             <script>
                                 var mini = true;
 
@@ -114,6 +169,5 @@
                                     }
                                 }
                             </script>
-
                     </body>
 </html>

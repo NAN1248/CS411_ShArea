@@ -1,4 +1,3 @@
-
 <html>
         <head>
             <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -74,6 +73,7 @@
         <body>
 
                 <div id="mySidebar" class="sidebar" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
+                        <a href="http://127.0.0.1:5000"><i class="material-icons">home</i><span class="icon-text"></span>&nbsp;&nbsp;&nbsp;&nbsp;Logout<span></a>
                         <a href="MyEvents.html"><i class="material-icons">create</i><span class="icon-text"></span>&nbsp;&nbsp;&nbsp;&nbsp;Create Event</a></span>
                         <a href="search.html"><i class="material-icons">search</i><span class="icon-text"></span>&nbsp;&nbsp;&nbsp;&nbsp;Find A Friend</a></span>
                         </a><br>
@@ -81,26 +81,33 @@
                         <a href="settings.html"><i class="material-icons">perm_identity</i><span class="icon-text"></span>&nbsp;&nbsp;&nbsp;&nbsp;Account Info<span></a>
                 </div>
             <div id="main">
+                    <h1 style = "text-align:center;"> Manage Your Events</h1>
+                    <div id = "frmCreate" style = "width:300px;float:left">
                     <form name="frmCreate">
-                    <input type="text" id="id">
-                    <input type="text" id="start_time">
-                    <input type="text" id="duration">
-                    <input type="text" id="tags">
-                    <input type="button" id="createEvent" value="Create Event">
+                            <h2> Create An Event</h2><br>
+                            <label for="id">Enter You Username</label><br>
+                            <input type="text" id="id" placeholder="Username"><br>
+                             <br>
+                            <label for="start_time">Enter Start Time Of Event</label><br>
+                            <input type="text" id="start_time" placeholder="start time"><br>
+                             <br>
+                            <label for="duration">Enter Duration of Event</label><br>
+                            <input type="text" id="duration" placeholder="duration"><br>
+                             <br>
+                            <label for="tags">Enter Type Of Event</label><br>
+                            <input type="text" id="tags" placeholder="Tags (comma separated)"><br>
+                             <br>
+                            <input type="button" id="createEvent" value="Create Event">
                     </form>
-
-                    <br>
-                    <form name="frmDelete">
-                    <br> <br>
-                    Creat An Event
-                    <br>
-                    <input type="text" id="usrname">
-                    <input type="button" id="deleteEvent" value="Delete Event">
+            </div>
+                    <div id = "delete" style = "width:500px;float:center;text-align:left">
+                    <h2 style = "text-align: right;"> Delete An Event</h2>
+                    <form style = "text-align: right;">
+                            <label for="usrname">Enter Your Username</label></br>
+                            <input type="text" id="usrname"><br>
+                            <input type="button" id="deleteEvent" value="Delete Event">
                     </form>
-
-                    <button onclick= "window.location.href='Settings.html'"> Go To Home </button>
-                    <button onclick= "window.location.href='events.html'"> Go To Events Page </button>
-
+            </div>
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                     <script src="./static/MyEvents.js"></script>
             </div>
